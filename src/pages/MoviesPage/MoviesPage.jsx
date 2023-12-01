@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { getMovies } from 'helpers/API';
 
-export const Movies = () => {
+const Movies = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const movieName = searchParams.get('query');
 
@@ -30,7 +30,7 @@ onChange={e =>
           `&query=${movieName}`
         );
 
-        setMoviesByName(moviesRequestByName);
+        setMoviesByName(moviesRequestByName.results);
       } catch (error) {
         console.log(error);
       }
@@ -54,10 +54,13 @@ onChange={e =>
         <button type="submit">Submit</button>
       </form>
       <div>
-        {moviesByName.map(movie => (
-          <Link to={`movies/${movie.id}`}>{movie.title}</Link>
+        {moviesByName.map(({ id, title }) => (
+          <Link key={id} to={`movies/${id}`}>
+            {title}
+          </Link>
         ))}
       </div>
     </>
   );
 };
+export default Movies;

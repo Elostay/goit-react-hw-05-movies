@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 const baseUrl = 'https://image.tmdb.org/t/p/w300';
 
-export const MovieDetails = () => {
+const MovieDetails = () => {
   const { movieId } = useParams();
   const [info, setInfo] = useState({});
   const [infoGenres, setInfoGenres] = useState([]);
@@ -43,3 +43,4 @@ export const MovieDetails = () => {
     </>
   );
 };
+export default MovieDetails;
