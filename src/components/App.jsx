@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import { lazy } from 'react';
 import Layout from './Layout/Layout';
 // import { Home } from '../pages/HomePage/HomePage';
@@ -25,6 +25,7 @@ export const App = () => {
             <Route path="reviews" element={<Reviews />} />
           </Route>
         </Route>
+        <Route path="*" element={<Navigate to={'/'} />}></Route>
       </Routes>
     </>
   );
