@@ -1,6 +1,6 @@
 import { getMovies } from 'helpers/API';
 import { useEffect, useState } from 'react';
-import { Outlet, useParams } from 'react-router-dom';
+import { Outlet, useLocation, useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
 const baseUrl = 'https://image.tmdb.org/t/p/w300';
@@ -9,6 +9,8 @@ const MovieDetails = () => {
   const { movieId } = useParams();
   const [info, setInfo] = useState({});
   const [infoGenres, setInfoGenres] = useState([]);
+  const location = useLocation();
+  console.log('location', location);
   useEffect(() => {
     const movieInfo = async () => {
       try {
@@ -25,7 +27,7 @@ const MovieDetails = () => {
 
   return (
     <>
-      <button type="button">Go back</button>
+      <Link to={location.state}>Go back</Link>
       <img
         width="100"
         height="100"
