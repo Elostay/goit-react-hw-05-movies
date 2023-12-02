@@ -10,7 +10,7 @@ const Reviews = () => {
     const movieCast = async () => {
       try {
         const review = await getMovies(`movie/${movieId}/reviews`);
-        console.log(review.results);
+
         setInfoReview(review.results);
       } catch (error) {
         console.log(error);

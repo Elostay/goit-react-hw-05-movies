@@ -10,7 +10,7 @@ const Cast = () => {
     const movieCast = async () => {
       try {
         const cast = await getMovies(`movie/${movieId}/credits`);
-        console.log('cast', cast.cast);
+
         setInfoCast(cast.cast);
       } catch (error) {
         console.log(error);

@@ -10,12 +10,12 @@ const MovieDetails = () => {
   const [info, setInfo] = useState({});
   const [infoGenres, setInfoGenres] = useState([]);
   const location = useLocation();
-  console.log('location', location);
+
   useEffect(() => {
     const movieInfo = async () => {
       try {
         const description = await getMovies(`movie/${movieId}`);
-        console.log('description', description);
+
         setInfo(description);
         setInfoGenres(description.genres);
       } catch (error) {
@@ -39,8 +39,12 @@ const MovieDetails = () => {
       {infoGenres.map(el => (
         <p key={el.id}>{el.name}</p>
       ))}
-      <Link to="cast">Cast</Link>
-      <Link to="reviews">Reviews</Link>
+      <Link to="cast" state={location.state}>
+        Cast
+      </Link>
+      <Link to="reviews" state={location.state}>
+        Reviews
+      </Link>
       <Outlet />
     </>
   );
