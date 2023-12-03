@@ -1,4 +1,4 @@
-import { getMovies } from 'helpers/API';
+import { fetchMovieReviewsAPI } from 'helpers/API';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
@@ -10,7 +10,7 @@ const Reviews = () => {
   useEffect(() => {
     const movieCast = async () => {
       try {
-        const review = await getMovies(`movie/${movieId}/reviews`);
+        const review = await fetchMovieReviewsAPI(movieId);
 
         setInfoReview(review.results);
       } catch (error) {

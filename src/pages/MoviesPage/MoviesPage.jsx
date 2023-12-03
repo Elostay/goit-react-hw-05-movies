@@ -1,69 +1,43 @@
 import { useCallback, useEffect, useState } from 'react';
-import { Link, useLocation, useSearchParams } from 'react-router-dom';
-import { getMovies } from 'helpers/API';
+import { useSearchParams } from 'react-router-dom';
+import { fetchMoviesByNameAPI } from 'helpers/API';
+import { MoviesList } from 'components/MoviesList/MoviesList';
 
 const Movies = () => {
-  const [query, setQuery] = useState('');
-
   const [searchParams, setSearchParams] = useSearchParams();
 
   const [moviesByName, setMoviesByName] = useState([]);
 
-  const location = useLocation();
-
-  const handleChange = ({ target: { value } }) => {
-    if (!value) setSearchParams({});
-    setQuery(value);
-  };
-  const fetchMoviesByName = useCallback(async () => {
+  const fetchMoviesByName = useCallback(async query => {
     try {
-      const moviesRequestByName = await getMovies(
-        `search/movie`,
-        `&query=${query}`
-      );
+      const moviesRequestByName = await fetchMoviesByNameAPI(query);
 
       setMoviesByName(moviesRequestByName.results);
     } catch (error) {
       console.log(error);
     }
-  }, [query]);
-
-  //   useEffect(() => {
-  //     if (query) {
-  //       fetchMoviesByName();
-  //     }
-  //   }, [fetchMoviesByName, query]);
+  }, []);
 
   useEffect(() => {
-    const value = searchParams.get('search');
-    if (value) setQuery(value);
-  }, [searchParams]);
+    const search = searchParams.get('search');
+    if (!search) return;
+    fetchMoviesByName(search);
+  }, [fetchMoviesByName, searchParams]);
 
   const handleSubmit = e => {
     e.preventDefault();
-    if (!query) return setSearchParams({});
-    setSearchParams({ search: query });
-    fetchMoviesByName();
+    const search = e.target.search.value.trim().toLowerCase();
+    if (!search) return;
+    setSearchParams({ search });
   };
 
   return (
     <>
       <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          name="search"
-          value={query}
-          onChange={handleChange}
-        />
+        <input type="text" name="search" />
         <button type="submit">Submit</button>
       </form>
-      <div>
-        {moviesByName.map(({ id, title }) => (
-          <Link key={id} to={`${id}`} state={location}>
-            {title}
-          </Link>
-        ))}
-      </div>
+      <MoviesList movies={moviesByName} />
     </>
   );
 };
