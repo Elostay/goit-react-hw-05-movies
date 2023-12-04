@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { fetchMoviesByNameAPI } from 'helpers/API';
 import { MoviesList } from 'components/MoviesList/MoviesList';
+import { Button, Input, Form } from './MoviesPage.styled';
 
 const Movies = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -33,12 +34,17 @@ const Movies = () => {
 
   return (
     <>
-      <form className="flex gap-10 text-xl " onSubmit={handleSubmit}>
-        <input className="" type="text" name="search" />
-        <button className="bg-sky-500 max-w-xl" type="submit">
+      <Form className="flex gap-10 text-xl" onSubmit={handleSubmit}>
+        <Input
+          placeholder="Enter movie name"
+          className=""
+          type="text"
+          name="search"
+        />
+        <Button className="bg-sky-500 max-w-xl" type="submit">
           Submit
-        </button>
-      </form>
+        </Button>
+      </Form>
       <MoviesList movies={moviesByName} />
     </>
   );

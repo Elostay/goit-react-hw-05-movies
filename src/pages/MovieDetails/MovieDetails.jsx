@@ -1,8 +1,19 @@
 import { fetchMovieInfoAPI } from 'helpers/API';
 import { useEffect, useRef, useState } from 'react';
 import { Outlet, useLocation, useNavigate, useParams } from 'react-router-dom';
-import { Link } from 'react-router-dom';
+
 import oops from '../../img/oops.jpg';
+import {
+  BtnLoadAddInfo,
+  BtnLoadAddInfoContainer,
+  Container,
+  ContainerInfo,
+  Genres,
+  GenresSpan,
+  GoBack,
+  Img,
+  TitleMovie,
+} from './MovieDetails.styled';
 
 const baseUrl = 'https://image.tmdb.org/t/p/w300';
 
@@ -35,29 +46,37 @@ const MovieDetails = () => {
   }, [info.poster_path, movieId, navigate]);
 
   return (
-    <div className="">
-      <Link to={goBack.current.state}>Go back</Link>
+    <>
+      <GoBack to={goBack.current.state}>Go back</GoBack>
+      <Container>
+        {!isPosterPath && <img width="100" height="100" src={oops} alt="404" />}
 
-      {!isPosterPath && <img width="100" height="100" src={oops} alt="404" />}
+        {info.poster_path && (
+          <Img
+            width="100"
+            height="100"
+            src={`${baseUrl}${info.poster_path}`}
+            alt="poster"
+          />
+        )}
 
-      {info.poster_path && (
-        <img
-          width="100"
-          height="100"
-          src={`${baseUrl}${info.poster_path}`}
-          alt="poster"
-        />
-      )}
-
-      <h2>{info.title}</h2>
-      <p>Overview: {info.overview}</p>
-      {infoGenres.map(el => (
-        <p key={el.id}>{el.name}</p>
-      ))}
-      <Link to="cast">Cast</Link>
-      <Link to="reviews">Reviews</Link>
+        <ContainerInfo>
+          <TitleMovie>{info.title}</TitleMovie>
+          <p>Overview: {info.overview}</p>
+          <Genres>
+            <GenresSpan>Genres:</GenresSpan>
+            {infoGenres.map(el => (
+              <span key={el.id}>{el.name}</span>
+            ))}
+          </Genres>
+        </ContainerInfo>
+      </Container>
+      <BtnLoadAddInfoContainer>
+        <BtnLoadAddInfo to="cast">Cast</BtnLoadAddInfo>
+        <BtnLoadAddInfo to="reviews">Reviews</BtnLoadAddInfo>
+      </BtnLoadAddInfoContainer>
       <Outlet />
-    </div>
+    </>
   );
 };
 export default MovieDetails;

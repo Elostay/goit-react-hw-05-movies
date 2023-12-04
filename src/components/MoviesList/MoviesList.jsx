@@ -16,6 +16,7 @@ export const MoviesList = ({ movies }) => {
           + {movie.title ?? movie.name}
         </Link>
       ))}
+      {movies.length === 0 && <p>Not found</p>}
     </List>
   );
 };

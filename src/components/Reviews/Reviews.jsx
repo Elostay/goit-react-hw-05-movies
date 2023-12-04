@@ -1,6 +1,7 @@
 import { fetchMovieReviewsAPI } from '../../helpers/API';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { Author, List, NotFound, Review } from './Reviews.styled';
 
 const Reviews = () => {
   const { movieId } = useParams();
@@ -23,16 +24,16 @@ const Reviews = () => {
   }, [movieId]);
 
   return (
-    <>
-      {!isLoading && infoReview.length === 0 && <div>Not found</div>}
+    <List>
+      {!isLoading && infoReview.length === 0 && <NotFound>Not found</NotFound>}
       {infoReview.length !== 0 &&
         infoReview.map(el => (
-          <div key={el.id}>
-            <h2>{el.author}</h2>
-            <p>{el.content}</p>
-          </div>
+          <li key={el.id}>
+            <Author>{el.author}</Author>
+            <Review>{el.content}</Review>
+          </li>
         ))}
-    </>
+    </List>
   );
 };
 export default Reviews;

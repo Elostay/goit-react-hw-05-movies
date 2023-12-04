@@ -3,6 +3,11 @@ import { NavLink } from 'react-router-dom';
 
 export const Button = styled(NavLink)`
   &.active {
-    color: #e8bcb9;
+    color: white;
   }
+  font-size: 30px;
+`;
+export const Loading = styled.p`
+  color: white;
+  font-size: 30px;
 `;
