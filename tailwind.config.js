@@ -6,7 +6,16 @@ module.exports = {
     './src/components/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        darkMy: '#1d1a39',
+        purpleMy: '#451952',
+        purplePaleMy: '#662549',
+        pinkMy: '#ae445a',
+        orangeMy: '#f39f5a',
+        whiteMy: '#e8bcb9',
+      },
+    },
   },
-  plugins: [],
+  plugins: [require('@tailwindcss/forms')],
 };

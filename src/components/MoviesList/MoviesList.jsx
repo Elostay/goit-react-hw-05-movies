@@ -5,10 +5,15 @@ export const MoviesList = ({ movies }) => {
   const location = useLocation();
 
   return (
-    <List>
+    <List className="text-xl text-whiteMy">
       {movies.map(movie => (
-        <Link to={`/movies/${movie.id}`} key={movie.id} state={location}>
-          {movie.title ?? movie.name}
+        <Link
+          className="block max-w-xs"
+          to={`/movies/${movie.id}`}
+          key={movie.id}
+          state={location}
+        >
+          + {movie.title ?? movie.name}
         </Link>
       ))}
     </List>

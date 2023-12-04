@@ -35,7 +35,7 @@ const MovieDetails = () => {
   }, [info.poster_path, movieId, navigate]);
 
   return (
-    <>
+    <div className="">
       <Link to={goBack.current.state}>Go back</Link>
 
       {!isPosterPath && <img width="100" height="100" src={oops} alt="404" />}
@@ -57,7 +57,7 @@ const MovieDetails = () => {
       <Link to="cast">Cast</Link>
       <Link to="reviews">Reviews</Link>
       <Outlet />
-    </>
+    </div>
   );
 };
 export default MovieDetails;

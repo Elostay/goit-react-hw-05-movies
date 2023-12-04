@@ -3,6 +3,6 @@ import { NavLink } from 'react-router-dom';
 
 export const Button = styled(NavLink)`
   &.active {
-    color: orange;
+    color: #e8bcb9;
   }
 `;

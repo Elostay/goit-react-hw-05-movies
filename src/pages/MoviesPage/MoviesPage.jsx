@@ -33,9 +33,11 @@ const Movies = () => {
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
-        <input type="text" name="search" />
-        <button type="submit">Submit</button>
+      <form className="flex gap-10 text-xl " onSubmit={handleSubmit}>
+        <input className="" type="text" name="search" />
+        <button className="bg-sky-500 max-w-xl" type="submit">
+          Submit
+        </button>
       </form>
       <MoviesList movies={moviesByName} />
     </>
