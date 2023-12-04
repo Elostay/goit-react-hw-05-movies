@@ -19,4 +19,7 @@ export const Author = styled.h2`
 `;
 export const Review = styled.p`
   font-size: 18px;
+  @media (max-width: 360px) {
+    font-size: 16px;
+  }
 `;

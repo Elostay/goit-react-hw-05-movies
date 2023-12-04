@@ -34,7 +34,7 @@ const Movies = () => {
 
   return (
     <>
-      <Form className="flex gap-10 text-xl" onSubmit={handleSubmit}>
+      <Form className="flex  " onSubmit={handleSubmit}>
         <Input
           placeholder="Enter movie name"
           className=""

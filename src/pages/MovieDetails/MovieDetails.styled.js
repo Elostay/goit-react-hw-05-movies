@@ -29,6 +29,11 @@ export const Container = styled.div`
   margin: 30px 0 30px 0;
   margin: 0 auto;
   text-align: center;
+  @media (max-width: 575px) {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
 `;
 export const TitleMovie = styled.h2`
   font-size: 30px;

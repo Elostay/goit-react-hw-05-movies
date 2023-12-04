@@ -15,6 +15,9 @@ export const CastItem = styled.li`
   font-size: 20px;
   gap: 20px;
   font-weight: 500;
+  @media (max-width: 650px) {
+    width: calc((100% - 10px) / 2);
+  }
 `;
 export const Img = styled.img`
   width: 200px;
