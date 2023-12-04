@@ -6,6 +6,10 @@ export const BtnLoadAddInfo = styled(NavLink)`
   }
   font-size: 30px;
 `;
+export const Oops = styled.img`
+  width: 200px;
+  border-radius: 20px;
+`;
 export const GoBack = styled(Link)`
   display: block;
   margin: 100px 0 50px 0;

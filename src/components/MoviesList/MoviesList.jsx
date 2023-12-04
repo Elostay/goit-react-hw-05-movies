@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 import oops from '../../img/oops.jpg';
 import { Img } from 'components/Cast/Cast.styled';
 
-export const MoviesList = ({ movies, isPosterPath }) => {
+export const MoviesList = ({ movies }) => {
   const location = useLocation();
   const baseUrl = 'https://image.tmdb.org/t/p/w300';
 
@@ -14,18 +14,15 @@ export const MoviesList = ({ movies, isPosterPath }) => {
           <Item key={movie.id}>
             <Links to={`/movies/${movie.id}`} key={movie.id} state={location}>
               <>
-                {!isPosterPath && (
-                  <img width="100" height="100" src={oops} alt="404" />
-                )}
-              </>
-              <>
-                {movie.poster_path && (
+                {movie.poster_path ? (
                   <Img
                     width="100"
                     height="100"
                     src={`${baseUrl}${movie.poster_path}`}
                     alt="poster"
                   />
+                ) : (
+                  <Img width="100" height="100" src={oops} alt="404" />
                 )}
               </>
               {movie.title ?? movie.name}
@@ -37,18 +34,3 @@ export const MoviesList = ({ movies, isPosterPath }) => {
     </>
   );
 };
-
-// {
-// /  !isPosterPath && <img width="100" height="100" src={oops} alt="404" />;
-// }
-
-// {
-//   info.poster_path && (
-//     <Img
-//       width="100"
-//       height="100"
-//       src={`${baseUrl}${info.poster_path}`}
-//       alt="poster"
-//     />
-//   );
-// }

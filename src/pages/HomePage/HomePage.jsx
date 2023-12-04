@@ -5,7 +5,6 @@ import { Title } from './HomePage.styled';
 
 const Home = () => {
   const [popularMovies, setPopularMovies] = useState([]);
-  const [isPosterPath, setIsPosterPath] = useState(true);
 
   useEffect(() => {
     const fetchMovies = async () => {
@@ -15,18 +14,14 @@ const Home = () => {
         setPopularMovies(popularMoviesRequest.results);
       } catch (error) {
         console.log(error);
-      } finally {
-        popularMovies.poster_path === null
-          ? setIsPosterPath(false)
-          : setIsPosterPath(true);
       }
     };
     fetchMovies();
-  }, [popularMovies.poster_path]);
+  }, []);
   return (
     <>
       <Title>Popular movies</Title>
-      {<MoviesList movies={popularMovies} isPosterPath={isPosterPath} />}
+      {<MoviesList movies={popularMovies} />}
     </>
   );
 };

@@ -12,6 +12,7 @@ import {
   GenresSpan,
   GoBack,
   Img,
+  Oops,
   TitleMovie,
 } from './MovieDetails.styled';
 
@@ -49,7 +50,9 @@ const MovieDetails = () => {
     <>
       <GoBack to={goBack.current.state}>Go back</GoBack>
       <Container>
-        {!isPosterPath && <img width="100" height="100" src={oops} alt="404" />}
+        {!isPosterPath && (
+          <Oops width="100" height="100" src={oops} alt="404" />
+        )}
 
         {info.poster_path && (
           <Img

@@ -20,4 +20,5 @@ export const Links = styled(Link)`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  justify-content: space-between;
 `;
