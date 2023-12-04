@@ -1,4 +1,4 @@
-import { fetchMovieReviewsAPI } from 'helpers/API';
+import { fetchMovieReviewsAPI } from '../../helpers/API';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 

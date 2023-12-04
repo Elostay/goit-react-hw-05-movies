@@ -1,4 +1,4 @@
-import { fetchMovieCastAPI } from 'helpers/API';
+import { fetchMovieCastAPI } from '../../helpers/API';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import oops from '../../img/oops.jpg';
