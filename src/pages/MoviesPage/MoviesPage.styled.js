@@ -23,3 +23,8 @@ export const Form = styled.form`
   align-items: center;
   gap: 20px;
 `;
+
+export const NotFound = styled.div`
+  font-size: 20px;
+  font-weight: 600;
+`;

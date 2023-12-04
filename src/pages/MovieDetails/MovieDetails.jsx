@@ -15,6 +15,7 @@ import {
   Oops,
   TitleMovie,
 } from './MovieDetails.styled';
+import { NotFound } from 'components/Reviews/Reviews.styled';
 
 const baseUrl = 'https://image.tmdb.org/t/p/w300';
 
@@ -68,9 +69,11 @@ const MovieDetails = () => {
           <p>Overview: {info.overview}</p>
           <Genres>
             <GenresSpan>Genres:</GenresSpan>
-            {infoGenres.map(el => (
-              <span key={el.id}>{el.name}</span>
-            ))}
+            {infoGenres.length !== 0 ? (
+              infoGenres.map(el => <span key={el.id}>{el.name}</span>)
+            ) : (
+              <NotFound>Not found</NotFound>
+            )}
           </Genres>
         </ContainerInfo>
       </Container>
