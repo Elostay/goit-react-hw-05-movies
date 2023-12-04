@@ -1,7 +1,7 @@
-import { Item, Links, List } from 'pages/HomePage/HomePage.styled';
+import { Item, Links, List, OopsImg } from 'pages/HomePage/HomePage.styled';
 import { useLocation } from 'react-router-dom';
 import oops from '../../img/oops.jpg';
-import { Img } from 'components/Cast/Cast.styled';
+import { Img } from '../../pages/HomePage/HomePage.styled';
 
 export const MoviesList = ({ movies }) => {
   const location = useLocation();
@@ -22,10 +22,11 @@ export const MoviesList = ({ movies }) => {
                     alt="poster"
                   />
                 ) : (
-                  <Img width="100" height="100" src={oops} alt="404" />
+                  <OopsImg width="100" height="100" src={oops} alt="404" />
                 )}
               </>
-              {movie.title ?? movie.name}
+
+              {<p>{movie.title}</p> || <p>{movie.name}</p>}
             </Links>
           </Item>
         ))}

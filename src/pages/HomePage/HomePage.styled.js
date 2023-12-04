@@ -20,5 +20,14 @@ export const Links = styled(Link)`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  justify-content: space-between;
+`;
+
+export const Img = styled.img`
+  width: 200px;
+  border-radius: 20px;
+`;
+export const OopsImg = styled.img`
+  width: 200px;
+  height: 300px;
+  border-radius: 20px;
 `;
