@@ -1,5 +1,5 @@
 import { fetchMovieInfoAPI } from 'helpers/API';
-import { useEffect, useRef, useState } from 'react';
+import { Suspense, useEffect, useRef, useState } from 'react';
 import { Outlet, useLocation, useNavigate, useParams } from 'react-router-dom';
 
 import oops from '../../img/oops.jpg';
@@ -81,7 +81,9 @@ const MovieDetails = () => {
         <BtnLoadAddInfo to="cast">Cast</BtnLoadAddInfo>
         <BtnLoadAddInfo to="reviews">Reviews</BtnLoadAddInfo>
       </BtnLoadAddInfoContainer>
-      <Outlet />
+      <Suspense>
+        <Outlet />
+      </Suspense>
     </>
   );
 };
